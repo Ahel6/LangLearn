@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LangLearn</string>
+    <string name="langauge3">Langauge3</string>
+    <string name="Settings" />
+    <string name="Langauge2" />
+    <string name="Langauge3" />
+    <string name="Language1" />
+    <string name="Back" />
+    <string name="Go_Back" />
+    <string name="backbutton">backButton</string>
+    <string name="langauge1_button">Langauge1 Button</string>
+    <string name="langauge2_button">Langauge2 Button</string>
+    <string name="langauge3_button">Langauge3 Button</string>
+    <string name="settings_button">Settings Button</string>
+</resources>
