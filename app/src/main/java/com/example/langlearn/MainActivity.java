@@ -13,6 +13,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button settingsButton = (Button) findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(this);
+
         Button languageButton1 = (Button) findViewById(R.id.openLanguage1);
         languageButton1.setOnClickListener(this);
 
@@ -25,11 +28,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.openLanguage1) {
-            Intent langMenu = new Intent(this, Language1Menu.class);
+        if (view.getId() == R.id.settingsButton) {
+            Intent openSettings = new Intent(this, Settings.class);
+            startActivity(openSettings);
+        } else if (view.getId() == R.id.openLanguage1) {
+            Intent langMenu = new Intent(this, Language2Menu.class);
             startActivity(langMenu);
         } else if (view.getId() == R.id.openLanguage2) {
-            Intent langMenu = new Intent(this, Language2Menu.class);
+            Intent langMenu = new Intent(this, Language3Menu.class);
             startActivity(langMenu);
         } else if (view.getId() == R.id.openLanguage3) {
             Intent langMenu = new Intent(this, Language3Menu.class);
@@ -37,26 +43,3 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 }
-/**
-    public void openSettings(View v){
-        Intent showSettings = new Intent(this, Settings.class);
-        startActivity(showSettings);
-
-    }
-    public void openLanguage1(View v){
-        Intent showSettings = new Intent(this, Language1Menu.class);
-        startActivity(showSettings);
-
-    }
-    public void openLanguage2(View v){
-        Intent showSettings = new Intent(this, Language2Menu.class);
-        startActivity(showSettings);
-
-    }
-    public void openLanguage3(View v){
-        Intent showSettings = new Intent(this, Language3Menu.class);
-        startActivity(showSettings);
-
-    }
-}
- **/
