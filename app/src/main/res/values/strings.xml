@@ -12,4 +12,7 @@
     <string name="langauge2_button">Langauge2 Button</string>
     <string name="langauge3_button">Langauge3 Button</string>
     <string name="settings_button">Settings Button</string>
+    <string name="BackToMain" />
+    <string name="go_back">Go Back</string>
+    <string name="BackToMenu">Go back to the main menu</string>
 </resources>

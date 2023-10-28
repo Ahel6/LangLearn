@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Settings extends MainActivity {
+public class Language3Menu extends MainActivity {
 
     @Override //show splash screen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_language3menu);
     }
 
     public void openMain(View v){
