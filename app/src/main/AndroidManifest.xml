@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LangLearn"
         tools:targetApi="31">
-
         <activity
             android:name=".SplashScreen"
             android:theme = "@style/Theme.Design.NoActionBar"
@@ -31,6 +30,15 @@
         <activity
             android:name=".Settings"
             android:exported="true" />
+
+        <activity
+            android:name=".categorySelectMenu"
+            android:exported="true" />
+
+        <activity
+            android:name=".LearningActivity"
+            android:exported="true" />
+
 
 
     </application>

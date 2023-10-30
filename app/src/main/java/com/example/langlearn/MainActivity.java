@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    @Override //show splash screen
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Button settingsButton = (Button) findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(this);
@@ -23,23 +24,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         languageButton2.setOnClickListener(this);
 
         Button languageButton3 = (Button) findViewById(R.id.openLanguage3);
-        languageButton2.setOnClickListener(this);
+        languageButton3.setOnClickListener(this);
+
+
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.settingsButton) {
-            Intent openSettings = new Intent(this, Settings.class);
-            startActivity(openSettings);
-        } else if (view.getId() == R.id.openLanguage1) {
-            Intent langMenu = new Intent(this, Language2Menu.class);
-            startActivity(langMenu);
-        } else if (view.getId() == R.id.openLanguage2) {
-            Intent langMenu = new Intent(this, Language3Menu.class);
-            startActivity(langMenu);
-        } else if (view.getId() == R.id.openLanguage3) {
-            Intent langMenu = new Intent(this, Language3Menu.class);
-            startActivity(langMenu);
+        int chosenView = view.getId();
+        Intent intent;
+
+        if (chosenView == R.id.settingsButton) {
+            intent = new Intent(this, Settings.class);
+            startActivity(intent);
+
+        } else if (chosenView == R.id.openLanguage1) {
+            intent = new Intent(this, categorySelectMenu.class);
+            intent.putExtra("LanguageChosen", 1); //relay the chosen language to the category menu
+            startActivity(intent);
+
+        } else if (chosenView == R.id.openLanguage2) {
+            intent = new Intent(this, categorySelectMenu.class);
+            intent.putExtra("LanguageChosen", 2);
+            startActivity(intent);
+
+        } else if (chosenView == R.id.openLanguage3) {
+            intent = new Intent(this, categorySelectMenu.class);
+            intent.putExtra("LanguageChosen", 3);
+            startActivity(intent);
+
         }
     }
 }
