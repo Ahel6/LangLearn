@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private DatabaseController databaseController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button languageButton3 = (Button) findViewById(R.id.openLanguage3);
         languageButton3.setOnClickListener(this);
 
+
+        /** Values to store in the database, should only run once
+         *
+         */
+        /**
+        String[] languages = {"French", "Spanish"};
+        String[] frenchNum = {"Un", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit", "Neuf", "Dix"}
+        **/
+        databaseController = new DatabaseController(MainActivity.this);
+
+        databaseController.addData("French", "Test word", "test translation" );
+        databaseController.addData("French", "Test word 2 ", "test translation 2" );
 
     }
 
