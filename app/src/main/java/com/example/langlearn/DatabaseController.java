@@ -8,19 +8,20 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 /** Template for database creation/data addition used:
- *  https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/
+ *  <a href="https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/">...</a>
  */
 
 public class DatabaseController extends SQLiteOpenHelper {
 
     //database details
-    private static String DBName = "Languages";
-    private static int DBVersion = 1;
+    private static final String DBName = "Languages";
+    private static final int DBVersion = 1;
+
     //table details
-    private static String languageName = "langaugeName";
+    private static final String languageName = "langaugeName"; //table name
     private static String ID = "ID";
-    private static String langWord = "langWord";
-    private static String englishWord = "englishWord";
+    private static String ColumnLangWord = "langWord"; //column name
+    private static String ColumnEnglishWord = "englishWord"; //column name
 
     //Controller constructor
     public DatabaseController(Context context) {
@@ -33,8 +34,8 @@ public class DatabaseController extends SQLiteOpenHelper {
         String query = "CREATE TABLE "
                 + languageName + " ("
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + langWord + " TEXT,"
-                + englishWord + " TEXT)";
+                + ColumnLangWord + " TEXT,"
+                + ColumnEnglishWord + " TEXT)";
 
         db.execSQL(query);
     }
@@ -49,12 +50,13 @@ public class DatabaseController extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(langWord, langWord); //in column X put Y
-        values.put(englishWord, englishWord);
+        values.put(ID, 1);
+        values.put(ColumnLangWord, langWord); //in column X, put Y
+        values.put(ColumnEnglishWord, englishWord);
 
-        db.insert(languageName, null, values);//put the added values (above) in the table
+        db.insert("French", null, values);//put the added values (above) in the table
 
-        db.close();//close database
+        //db.close();//close database
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

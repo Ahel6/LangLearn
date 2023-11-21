@@ -29,18 +29,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         languageButton3.setOnClickListener(this);
 
 
-        /** Values to store in the database, should only run once
-         *
-         */
-        /**
+        /** Values to store in the database, should only run once**/
+
         String[] languages = {"French", "Spanish"};
-        String[] frenchNum = {"Un", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit", "Neuf", "Dix"}
-        **/
+        String[] frenchNum = {"Un", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit", "Neuf", "Dix"};
+        String[] engNum = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
+
         databaseController = new DatabaseController(MainActivity.this);
 
-        databaseController.addData("French", "Test word", "test translation" );
-        databaseController.addData("French", "Test word 2 ", "test translation 2" );
-
+        for (int I = 0; I < frenchNum.length; I++) {
+            databaseController.addData("French", frenchNum[I], engNum[I]);
+        }
     }
 
     @Override
