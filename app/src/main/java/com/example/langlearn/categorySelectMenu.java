@@ -1,15 +1,15 @@
 package com.example.langlearn;
 
 
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class categorySelectMenu extends MainActivity implements View.OnClickListener {
-@Override
-protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_category_select_menu);
@@ -25,43 +25,48 @@ protected void onCreate(Bundle savedInstanceState) {
 
         Button backButton = (Button) findViewById(R.id.BackButton);
         backButton.setOnClickListener(this);
-        }
-        //find which language was chosen
-        Intent Source = this.getIntent();
-        int SelectedLanguage = Source.getIntExtra("LanguageChosen", 0);
+    }
 
-@Override
-public void onClick(View view) { //open new activity based on button clicked
-        if (view.getId() == R.id.BackButton){
-                Intent backToMain = new Intent(this, MainActivity.class);
-                startActivity(backToMain);
+
+    @Override
+    public void onClick(View view) { //open new activity based on button clicked
+        int SelectedLanguage;
+        Bundle Extras = getIntent().getExtras();
+        if (Extras == null) {
+            SelectedLanguage = 0;
+        } else {
+            SelectedLanguage = Extras.getInt("LanguageKey");
+        }
+        if (view.getId() == R.id.BackButton) {
+            Intent backToMain = new Intent(this, MainActivity.class);
+            startActivity(backToMain);
 
         } else if (view.getId() == R.id.Category1Button) {
-                Intent langMenu = new Intent(this, categorySelectMenu.class);
+            Intent langMenu = new Intent(this, categorySelectMenu.class);
 
-                //send the selected language and category
-                langMenu.putExtra("SelectedLanguage", SelectedLanguage);
-                langMenu.putExtra("SelectedCategory",1);
-                startActivity(langMenu);
+            //send the selected language and category
+            langMenu.putExtra("SelectedLanguage", SelectedLanguage);
+            langMenu.putExtra("SelectedCategory", 1);
+            startActivity(langMenu);
 
         } else if (view.getId() == R.id.Category2Button) {
-                Intent langMenu = new Intent(this, categorySelectMenu.class);
-                langMenu.putExtra("SelectedLanguage", SelectedLanguage);
-                langMenu.putExtra("SelectedCategory",2);
-                startActivity(langMenu);
+            Intent langMenu = new Intent(this, categorySelectMenu.class);
+            langMenu.putExtra("SelectedLanguage", SelectedLanguage);
+            langMenu.putExtra("SelectedCategory", 2);
+            startActivity(langMenu);
 
         } else if (view.getId() == R.id.Category3Button) {
-                Intent langMenu = new Intent(this, categorySelectMenu.class);
-                langMenu.putExtra("SelectedLanguage", SelectedLanguage);
-                langMenu.putExtra("SelectedCategory",3);
-                startActivity(langMenu);
+            Intent langMenu = new Intent(this, categorySelectMenu.class);
+            langMenu.putExtra("SelectedLanguage", SelectedLanguage);
+            langMenu.putExtra("SelectedCategory", 3);
+            startActivity(langMenu);
 
         } else if (view.getId() == R.id.Category4Button) {
-                Intent langMenu = new Intent(this, categorySelectMenu.class);
-                langMenu.putExtra("SelectedLanguage", SelectedLanguage);
-                langMenu.putExtra("SelectedCategory",4);
+            Intent langMenu = new Intent(this, categorySelectMenu.class);
+            langMenu.putExtra("SelectedLanguage", SelectedLanguage);
+            langMenu.putExtra("SelectedCategory", 4);
 
-                startActivity(langMenu);
+            startActivity(langMenu);
         }
     }
 

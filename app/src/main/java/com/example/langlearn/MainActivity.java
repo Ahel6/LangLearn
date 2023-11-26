@@ -10,25 +10,28 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DatabaseController databaseController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        Button settingsButton = (Button) findViewById(R.id.settingsButton);
+        Button settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(this);
 
-        Button languageButton1 = (Button) findViewById(R.id.openLanguage1);
+        Button languageButton1 = findViewById(R.id.openLanguage1);
         languageButton1.setOnClickListener(this);
 
-        Button languageButton2 = (Button) findViewById(R.id.openLanguage2);
+        Button languageButton2 = findViewById(R.id.openLanguage2);
         languageButton2.setOnClickListener(this);
 
-        Button languageButton3 = (Button) findViewById(R.id.openLanguage3);
+        Button languageButton3 = findViewById(R.id.openLanguage3);
         languageButton3.setOnClickListener(this);
+    }
 
-
+    @Override
+    public void onClick(View view) {
         /** Values to store in the database, should only run once**/
 
         String[] languages = {"French", "Spanish"};
@@ -38,33 +41,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         databaseController = new DatabaseController(MainActivity.this);
 
         for (int I = 0; I < frenchNum.length; I++) {
-            databaseController.addData("French", frenchNum[I], engNum[I]);
+            databaseController.addData("French", I, frenchNum[I], engNum[I]);
         }
-    }
 
-    @Override
-    public void onClick(View view) {
         int chosenView = view.getId();
-        Intent intent;
+        Intent LanguageChosen;
+        int LanguageKeyNo;
 
         if (chosenView == R.id.settingsButton) {
-            intent = new Intent(this, Settings.class);
-            startActivity(intent);
+            LanguageChosen = new Intent(MainActivity.this, Settings.class);
+            startActivity(LanguageChosen);
 
         } else if (chosenView == R.id.openLanguage1) {
-            intent = new Intent(this, categorySelectMenu.class);
-            intent.putExtra("LanguageChosen", 1); //relay the chosen language to the category menu
-            startActivity(intent);
+            LanguageChosen = new Intent(MainActivity.this, categorySelectMenu.class);
+            LanguageKeyNo = 1;
+            LanguageChosen.putExtra("LanguageKey", LanguageKeyNo); //relay the chosen language to the category menu
+            startActivity(LanguageChosen);
 
         } else if (chosenView == R.id.openLanguage2) {
-            intent = new Intent(this, categorySelectMenu.class);
-            intent.putExtra("LanguageChosen", 2);
-            startActivity(intent);
+            LanguageChosen = new Intent(MainActivity.this, categorySelectMenu.class);
+            LanguageKeyNo = 2;
+            LanguageChosen.putExtra("LanguageKey", LanguageKeyNo);
+            startActivity(LanguageChosen);
 
         } else if (chosenView == R.id.openLanguage3) {
-            intent = new Intent(this, categorySelectMenu.class);
-            intent.putExtra("LanguageChosen", 3);
-            startActivity(intent);
+            LanguageChosen = new Intent(MainActivity.this, categorySelectMenu.class);
+            LanguageKeyNo = 3;
+            LanguageChosen.putExtra("LanguageKey", LanguageKeyNo);
+            startActivity(LanguageChosen);
 
         }
     }

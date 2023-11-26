@@ -46,15 +46,16 @@ public class DatabaseController extends SQLiteOpenHelper {
      * @param langWord Translated word to add
      * @param englishWord english translation
      */
-    public void addData(String languageName, String langWord, String englishWord){
+    public void addData(String languageName, int wordID, String langWord, String englishWord){
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(ID, 1);
+        values.put(ID, wordID);
         values.put(ColumnLangWord, langWord); //in column X, put Y
         values.put(ColumnEnglishWord, englishWord);
 
-        db.insert("French", null, values);//put the added values (above) in the table
+        db.insert(languageName, null, values);//put the added values (above) in the table
 
         //db.close();//close database
     }
