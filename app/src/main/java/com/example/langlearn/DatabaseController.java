@@ -18,26 +18,38 @@ public class DatabaseController extends SQLiteOpenHelper {
     private static final int DBVersion = 1;
 
     //table details
-    private static final String languageName = "langaugeName"; //table name
-    private static String ID = "ID";
-    private static String ColumnLangWord = "langWord"; //column name
-    private static String ColumnEnglishWord = "englishWord"; //column name
+    private String languageName; //table name
+    private String ID = "ID"; //
+    private final String ColumnLangWord = "LangWord"; //column name
+    private final String ColumnEnglishWord = "EnglishWord"; //column name
 
     //Controller constructor
-    public DatabaseController(Context context) {
-        super(context, DBName, null, DBVersion);
+    public DatabaseController(Context theContext) {
+        super(theContext, DBName, null, DBVersion);
     }
 
-
-    @Override //create table with column names
+    @Override
     public void onCreate(SQLiteDatabase db) {
+
+        db = this.getWritableDatabase();
         String query = "CREATE TABLE "
                 + languageName + " ("
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + ColumnLangWord + " TEXT,"
                 + ColumnEnglishWord + " TEXT)";
 
+        //create French table
+        languageName = "French";
         db.execSQL(query);
+
+
+        //create Spanish table
+        languageName = "Spanish";
+        db.execSQL(query);
+    }
+
+    public void createTables(SQLiteDatabase db){//create table in database
+
     }
 
     /** Add data to the database
@@ -46,7 +58,7 @@ public class DatabaseController extends SQLiteOpenHelper {
      * @param langWord Translated word to add
      * @param englishWord english translation
      */
-    public void addData(String languageName, int wordID, String langWord, String englishWord){
+    public void populate(String languageName, int wordID, String langWord, String englishWord){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -55,10 +67,17 @@ public class DatabaseController extends SQLiteOpenHelper {
         values.put(ColumnLangWord, langWord); //in column X, put Y
         values.put(ColumnEnglishWord, englishWord);
 
+        values.put(ID, 1);
+        values.put(ColumnLangWord, "French test"); //in column X, put Y
+        values.put(ColumnEnglishWord, "englishWord");
+
         db.insert(languageName, null, values);//put the added values (above) in the table
 
-        //db.close();//close database
+        db.close();//close database
     }
+
+
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + languageName); //if the table already exists, don't create a new one

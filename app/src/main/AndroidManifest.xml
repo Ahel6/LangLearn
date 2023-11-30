@@ -42,6 +42,10 @@
             android:name=".LearningActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".DatabaseController"
+            android:exported="true" />
+
 
 
     </application>
