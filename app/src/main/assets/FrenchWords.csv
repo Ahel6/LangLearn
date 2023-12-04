@@ -1,0 +1,56 @@
+﻿LangWord,EnglishWord,Class
+Un,One,Number
+Deux,Two,Number
+Trois,Three,Number
+Quatre,Four,Number
+Cinq,Five,Number
+Six,Six,Number
+Sept,Seven,Number
+Huit,Eight,Number
+Neuf,Nine,Number
+Dix,Ten,Number
+Vingt,Twenty,Number
+Trente,Thirty,Number
+Quarante,Fourty,Number
+Cinquante,Fifty ,Number
+Bonjour,Hello (Daytime),Greeting
+Ça va?,How are you?,Greeting
+"Ça va, et toi?","Im fine, and you?",Greeting
+Comment tu t'appelles?,What is your name?,Greeting
+C'est quoi ton nom?,What is your name? (Informal),Greeting
+Je m'appelle,My name is …,Greeting
+Je Suis …,I am …,Greeting
+Enchanté ,Pleased to meet you,Greeting
+D’où viens-tu?,Where are you from?,Greeting
+Je Suis allergique …,I am allergic to …,Food
+repas,Meal,Food
+petit-déjeuner,Breakfast,Food
+déjeuner,Lunch,Food
+dîner,Dinner,Food
+salade,Salad,Food
+banane,Banana,Food
+fraise,Strawberry,Food
+l’orange,Orange,Food
+pamplemousse,Grapefruit,Food
+pomme,Apple,Food
+raisin,Grape,Food
+laitière (f) / laitier (m),Dairy ,Food
+œuf,Egg,Food
+poisson,Fish,Food
+fruit de mer,seafood ,Food
+blé,Wheat ,Food
+des noisettes,Nuts,Food
+Pouvez-vous m'aider?,Can you help me?,Help
+Où est … ?,Where is … ?,Help
+Je me sens malade,I feel sick,Help
+Où est l'hôpital?,Where is the hospital,Help
+Comment puis-je aller à … ?,How do I get to … ?,Help
+je suis perdu,I'm lost,Help
+Tourner à gauche,Turn left,Help
+Tournez à droite,Trun right,Help
+Aller tout droit,Go straight ahead,Help
+Faire demi-tour,Turn around,Help
+l'hôtel,The hotel,Help
+la plage,The beach,Help
+l'aéroport,The airport,Help
+j'ai besoin d'un taxi,I need a taxi,Help

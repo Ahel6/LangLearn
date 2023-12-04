@@ -3,10 +3,16 @@ package com.example.langlearn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -17,20 +23,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //start the database - creates empty tables
         DatabaseController DBController = new DatabaseController(MainActivity.this);
-
         DBController.getWritableDatabase();
-        //DBController.populate("French",1, "FrenchTest", "EnglishTest");
-
 
 
         //Values to store in the database, should only run once
-        String[] frenchNum = {"Un", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit", "Neuf", "Dix"};
-        String[] engNum = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
-
-        for (int I = 0; I < frenchNum.length; I++) {
-            DBController.populate("French", frenchNum[I], engNum[I]);
-        }
-
+        //String[] frenchNum = {"Un", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit", "Neuf", "Dix"};
+        //String[] engNum = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
+        /**
+         for (int I = 0; I < frenchNum.length; I++) {
+         DBController.populate("French", frenchNum[I], engNum[I]);
+         }
+         **/
 
 
         Button settingsButton = findViewById(R.id.settingsButton);
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         languageButton3.setOnClickListener(this);
 
     }
+
 
     @Override
     public void onClick(View view) {
