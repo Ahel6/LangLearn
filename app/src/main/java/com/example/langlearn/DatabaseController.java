@@ -3,20 +3,13 @@ package com.example.langlearn;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Environment;
 import android.util.Log;
-
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+
 
 
 /** Template for database creation/data addition used:
@@ -55,6 +48,7 @@ public class DatabaseController extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + "French" + query);
         db.execSQL("CREATE TABLE " + "Spanish" + query);
 
+        /** https://stackoverflow.com/questions/16672074/import-csv-file-to-sqlite-in-android **/
 
         //read and insert from CSV
         InputStreamReader ISR;
@@ -68,49 +62,25 @@ public class DatabaseController extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             while ((line = buffer.readLine()) != null) {
+
                 //when encountering a comma, split the string
                 String[] columns = line.split(",");
-
-                ContentValues cv = new ContentValues(3);
-                cv.put(ColumnLangWord, columns[0].trim());
-                cv.put(ColumnEnglishWord, columns[1].trim());
-                cv.put(ColumnClass, columns[2].trim());
-                db.insert("French", null, cv);
+                ContentValues Values = new ContentValues();
+                //inserts each column from .split() into the table
+                Values.put(ColumnLangWord, columns[0].trim());
+                Values.put(ColumnEnglishWord, columns[1].trim());
+                Values.put(ColumnClass, columns[2].trim());
+                db.insert("French", null, Values);
+                Log.println(Log.VERBOSE, "Marker", "Entry inserted");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         db.setTransactionSuccessful();
         db.endTransaction();
+        Log.println(Log.VERBOSE, "Marker", "Data Insertion Complete");
 
     }
-
-    /** Add data to the database
-     *
-     * @param languageName Name of table for the word being added to
-     * @param langWord Translated word to add
-     * @param englishWord english translation
-     */
-
-    /**
-    public void populate(String languageName, String langWord, String englishWord){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(ColumnLangWord, langWord); //in column X, put Y
-        values.put(ColumnEnglishWord, englishWord);
-
-
-        db.insert(languageName, null, values);//put the added values (above) in the table
-
-        db.close();//close database
-     **/
-
-
-
-
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + "French"); //if the table already exists, Drop and make a new one

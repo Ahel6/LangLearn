@@ -1,5 +1,4 @@
-﻿LangWord,EnglishWord,Class
-Un,One,Number
+﻿Un,One,Number
 Deux,Two,Number
 Trois,Three,Number
 Quatre,Four,Number
@@ -12,15 +11,15 @@ Dix,Ten,Number
 Vingt,Twenty,Number
 Trente,Thirty,Number
 Quarante,Fourty,Number
-Cinquante,Fifty ,Number
+Cinquante,Fifty,Number
 Bonjour,Hello (Daytime),Greeting
 Ça va?,How are you?,Greeting
-"Ça va, et toi?","Im fine, and you?",Greeting
+Ça va et toi?,Im fine, and you?,Greeting
 Comment tu t'appelles?,What is your name?,Greeting
 C'est quoi ton nom?,What is your name? (Informal),Greeting
 Je m'appelle,My name is …,Greeting
 Je Suis …,I am …,Greeting
-Enchanté ,Pleased to meet you,Greeting
+Enchanté,Pleased to meet you,Greeting
 D’où viens-tu?,Where are you from?,Greeting
 Je Suis allergique …,I am allergic to …,Food
 repas,Meal,Food
@@ -38,7 +37,7 @@ laitière (f) / laitier (m),Dairy ,Food
 œuf,Egg,Food
 poisson,Fish,Food
 fruit de mer,seafood ,Food
-blé,Wheat ,Food
+blé,Wheat,Food
 des noisettes,Nuts,Food
 Pouvez-vous m'aider?,Can you help me?,Help
 Où est … ?,Where is … ?,Help

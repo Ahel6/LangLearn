@@ -37,6 +37,7 @@ public class categorySelectMenu extends MainActivity implements View.OnClickList
         } else {
             SelectedLanguage = Extras.getInt("LanguageKey");
         }
+
         if (view.getId() == R.id.BackButton) {
             Intent backToMain = new Intent(this, MainActivity.class);
             startActivity(backToMain);

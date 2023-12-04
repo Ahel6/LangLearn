@@ -25,17 +25,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         DatabaseController DBController = new DatabaseController(MainActivity.this);
         DBController.getWritableDatabase();
 
-
-        //Values to store in the database, should only run once
-        //String[] frenchNum = {"Un", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit", "Neuf", "Dix"};
-        //String[] engNum = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
-        /**
-         for (int I = 0; I < frenchNum.length; I++) {
-         DBController.populate("French", frenchNum[I], engNum[I]);
-         }
-         **/
-
-
         Button settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(this);
 
