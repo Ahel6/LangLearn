@@ -45,41 +45,44 @@ public class DatabaseController extends SQLiteOpenHelper {
                 + ColumnClass + " TEXT)";
 
         //create Tables
-        db.execSQL("CREATE TABLE " + "French" + query);
-        db.execSQL("CREATE TABLE " + "Spanish" + query);
+        db.execSQL("CREATE TABLE " + "FrenchWords" + query);
+        db.execSQL("CREATE TABLE " + "SpanishWords" + query);
 
         /** https://stackoverflow.com/questions/16672074/import-csv-file-to-sqlite-in-android **/
 
         //read and insert from CSV
-        InputStreamReader ISR;
-        try {
-            ISR = new InputStreamReader(context.getAssets().open("FrenchWords.csv"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        BufferedReader buffer = new BufferedReader(ISR);
-        String line = "";
-        db.beginTransaction();
-        try {
-            while ((line = buffer.readLine()) != null) {
-
-                //when encountering a comma, split the string
-                String[] columns = line.split(",");
-                ContentValues Values = new ContentValues();
-                //inserts each column from .split() into the table
-                Values.put(ColumnLangWord, columns[0].trim());
-                Values.put(ColumnEnglishWord, columns[1].trim());
-                Values.put(ColumnClass, columns[2].trim());
-                db.insert("French", null, Values);
-                Log.println(Log.VERBOSE, "Marker", "Entry inserted");
+        String[] Languages = new String[]{"FrenchWords", "SpanishWords"};
+        for (String item : Languages) {
+            InputStreamReader ISR;
+            try {
+                ISR = new InputStreamReader(context.getAssets().open(item + ".csv"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        db.setTransactionSuccessful();
-        db.endTransaction();
-        Log.println(Log.VERBOSE, "Marker", "Data Insertion Complete");
+            BufferedReader buffer = new BufferedReader(ISR);
+            String line = "";
+            db.beginTransaction();
+            try {
+                while ((line = buffer.readLine()) != null) {
 
+                    //when encountering a comma, split the string
+                    String[] columns = line.split(",");
+                    ContentValues Values = new ContentValues();
+                    //inserts each column from .split() into the table
+                    Values.put(ColumnLangWord, columns[0].trim());
+                    Values.put(ColumnEnglishWord, columns[1].trim());
+                    Values.put(ColumnClass, columns[2].trim());
+                    db.insert(item, null, Values);
+                    Log.println(Log.VERBOSE, "Marker", "Entry inserted");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            db.setTransactionSuccessful();
+            db.endTransaction();
+            Log.println(Log.VERBOSE, "Marker", "Data Insertion Complete");
+
+        }
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

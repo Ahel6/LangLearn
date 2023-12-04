@@ -1,0 +1,55 @@
+﻿Un,One,Number
+Dos,Two,Number
+Tres,Three,Number
+Cuatro,Four,Number
+Cinco,Five,Number
+Seis,Six,Number
+Siete,Seven,Number
+Ocho,Eight,Number
+Nueve,Nine,Number
+Diez,Ten,Number
+Veinte,Twenty,Number
+Treinta,Thirty,Number
+Cuarenta,Fourty,Number
+Cincuenta,Fifty ,Number
+Hola,Hello,Greeting
+¿Cómo estás? ,How are you? (Informal),Greeting
+¿Cómo está? ,How are you? (formal),Greeting
+"¿Estoy bien, y tú?","Im fine, and you?",Greeting
+¿Cómo te llamas? ,What is your name?,Greeting
+Mi nombre es,My name is …,Greeting
+Soy …,I am …,Greeting
+Mucho gusto ,Pleased to meet you,Greeting
+¿De dónde eres? ,Where are you from?,Greeting
+Soy alérgica a (f) / Soy alérgico a (m),I am allergic to …,Food
+Comida,Meal,Food
+Desayuno,Breakfast,Food
+Almuerza (f) / Almuerzo (m),Lunch,Food
+Cena,Dinner,Food
+Ensalada,Salad,Food
+Banana,Banana,Food
+Fresa,Strawberry,Food
+Naranja,Orange,Food
+Pomelo,Grapefruit,Food
+Manzana,Apple,Food
+Uva,Grape,Food
+Lácteos,Dairy ,Food
+Huevo,Egg,Food
+Pez,Fish,Food
+Mariscos,seafood ,Food
+Trigo,Wheat ,Food
+Nueces,Nuts,Food
+¿Me puedes ayudar?,Can you help me?,Help
+¿Dónde es ... ?,Where is … ?,Help
+Me siento enferma (f) / Me siento enfermo (m),I feel sick,Help
+¿Dónde está el hospital?,Where is the hospital,Help
+¿Cómo llego a ...?,How do I get to … ?,Help
+Estoy perdido,I'm lost,Help
+Gire a la izquierda,Turn left,Help
+Gire a la derecha,Trun right,Help
+Siga recto,Go straight ahead,Help
+Giro de vuelta,Turn around,Help
+El hotel,The hotel,Help
+La playa,The beach,Help
+El aeropuerto,The airport,Help
+Necesito un taxi,I need a taxi,Help
