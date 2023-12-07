@@ -37,20 +37,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         int chosenView = view.getId();
-        Intent LanguageChosen;
-        String LanguageKeyNo;
+        Intent LanguageChosen = new Intent(MainActivity.this, categorySelectMenu.class);
 
         if (chosenView == R.id.settingsButton) {
             LanguageChosen = new Intent(MainActivity.this, Settings.class);
             startActivity(LanguageChosen);
 
         } else if (chosenView == R.id.openFrench) {
-            LanguageChosen = new Intent(MainActivity.this, categorySelectMenu.class);
             LanguageChosen.putExtra("LanguageKey", "French"); //relay the chosen language to the category menu
             startActivity(LanguageChosen);
 
         } else if (chosenView == R.id.openSpanish) {
-            LanguageChosen = new Intent(MainActivity.this, categorySelectMenu.class);
+
             LanguageChosen.putExtra("LanguageKey", "Spanish");
             startActivity(LanguageChosen);
 
