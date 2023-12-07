@@ -44,19 +44,34 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/openLanguage2"
+        android:id="@+id/openFrench"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/french"
+        app:layout_constraintBottom_toTopOf="@+id/openSpanish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:contentDescription="@string/french"/>
+
+    <Button
+        android:id="@+id/openSpanish"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="224dp"
         android:layout_marginEnd="60dp"
-        android:text="Langauge2"
+        android:text="@string/spanish"
         app:layout_constraintBottom_toTopOf="@+id/openLanguage3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        android:contentDescription="@string/langauge2_button"/>
+        android:contentDescription="@string/spanish"/>
 
     <Button
         android:id="@+id/openLanguage3"
@@ -69,22 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/langauge3_button"/>
-
-    <Button
-        android:id="@+id/openLanguage1"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="60dp"
-        android:text="Language1"
-        app:layout_constraintBottom_toTopOf="@+id/openLanguage2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:contentDescription="@string/langauge1_button"/>
+        android:contentDescription="@string/Placeholder"/>
 
     <View
         android:id="@+id/divider"

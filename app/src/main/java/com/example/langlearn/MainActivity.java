@@ -1,18 +1,11 @@
 package com.example.langlearn;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.view.View;
 import android.widget.Button;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,16 +15,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         //start the database - creates empty tables
-        DatabaseController DBController = new DatabaseController(MainActivity.this);
+        DatabaseController DBController;
+        DBController = new DatabaseController(MainActivity.this);
         DBController.getWritableDatabase();
 
         Button settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(this);
 
-        Button languageButton1 = findViewById(R.id.openLanguage1);
+        Button languageButton1 = findViewById(R.id.openFrench);
         languageButton1.setOnClickListener(this);
 
-        Button languageButton2 = findViewById(R.id.openLanguage2);
+        Button languageButton2 = findViewById(R.id.openSpanish);
         languageButton2.setOnClickListener(this);
 
         Button languageButton3 = findViewById(R.id.openLanguage3);
@@ -44,29 +38,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int chosenView = view.getId();
         Intent LanguageChosen;
-        int LanguageKeyNo;
+        String LanguageKeyNo;
 
         if (chosenView == R.id.settingsButton) {
             LanguageChosen = new Intent(MainActivity.this, Settings.class);
             startActivity(LanguageChosen);
 
-        } else if (chosenView == R.id.openLanguage1) {
+        } else if (chosenView == R.id.openFrench) {
             LanguageChosen = new Intent(MainActivity.this, categorySelectMenu.class);
-            LanguageKeyNo = 1;
-            LanguageChosen.putExtra("LanguageKey", LanguageKeyNo); //relay the chosen language to the category menu
+            LanguageChosen.putExtra("LanguageKey", "French"); //relay the chosen language to the category menu
             startActivity(LanguageChosen);
 
-        } else if (chosenView == R.id.openLanguage2) {
+        } else if (chosenView == R.id.openSpanish) {
             LanguageChosen = new Intent(MainActivity.this, categorySelectMenu.class);
-            LanguageKeyNo = 2;
-            LanguageChosen.putExtra("LanguageKey", LanguageKeyNo);
+            LanguageChosen.putExtra("LanguageKey", "Spanish");
             startActivity(LanguageChosen);
 
         } else if (chosenView == R.id.openLanguage3) {
+            String txt = "Third language is unavailable at this time";
+            int dur = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this, txt, dur);
+            toast.show();
+            /**
+             * Placeholder if third language is added
             LanguageChosen = new Intent(MainActivity.this, categorySelectMenu.class);
-            LanguageKeyNo = 3;
+            LanguageKeyNo = "Placeholder";
             LanguageChosen.putExtra("LanguageKey", LanguageKeyNo);
             startActivity(LanguageChosen);
+             **/
 
         }
     }

@@ -1,14 +1,13 @@
 <resources>
     <string name="app_name">LangLearn</string>
-    <string name="langauge3">Langauge3</string>
     <string name="Settings">Open the settings menu</string>
     <string name="goBack">Go back</string>
-    <string name="langauge1_button">Langauge1 Button</string>
-    <string name="langauge2_button">Langauge2 Button</string>
-    <string name="langauge3_button">Langauge3 Button</string>
     <string name="settings_button">Settings Button</string>
-    <string name="category_1_button">Begin category 1</string>
-    <string name="category_2_button">Begin category 2</string>
-    <string name="category_3_button">Begin category 3</string>
-    <string name="category_4_button">Begin Category 4</string>
+    <string name="spanish">Spanish</string>
+    <string name="french">French</string>
+    <string name="Start_greetings">Start Learning greetings</string>
+    <string name="Start_Numbers">Start Learning numbers</string>
+    <string name="Start_FoodDrink">Start Learning food and drink</string>
+    <string name="Start_Help">Start Learning Help</string>
+    <string name="Placeholder">Unavailable at this time</string>
 </resources>
