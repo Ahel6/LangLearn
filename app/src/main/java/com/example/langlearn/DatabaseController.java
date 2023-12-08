@@ -3,17 +3,21 @@ package com.example.langlearn;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 
-
-/** Template for database creation/data addition used:
- *  <a href="https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/">...</a>
+/**
+ * Template for database creation/data addition used:
+ * <a href="https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/">...</a>
  */
 
 public class DatabaseController extends SQLiteOpenHelper {
@@ -29,6 +33,7 @@ public class DatabaseController extends SQLiteOpenHelper {
     private final String ColumnClass = "Class"; //
 
     private Context context;
+
     //Controller constructor
     public DatabaseController(Context context) {
         super(context, DBName, null, DBVersion);
@@ -84,6 +89,29 @@ public class DatabaseController extends SQLiteOpenHelper {
 
         }
     }
+
+    //returns a nested arrayList containing the english and foreign words based on parameters passed to it
+    public ArrayList<ArrayList> getTranslations(String Language, String Category) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<String> engWords = new ArrayList<>();
+        ArrayList<String> langWords = new ArrayList<>();
+        Cursor getQuery = db.rawQuery("SELECT " + ColumnEnglishWord + ColumnLangWord + "FROM" + Language
+                + "WHERE Class = " + Category, null);
+        if (getQuery.moveToFirst()) {
+            do {
+                engWords.add(getQuery.getString(0));
+                langWords.add(getQuery.getString(1));
+            } while (getQuery.moveToNext());
+        }
+        getQuery.close();
+        db.close();
+        ArrayList<ArrayList> data = new ArrayList<>();
+        data.add(engWords);
+        data.add(langWords);
+        return data;
+
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + "French"); //if the table already exists, Drop and make a new one

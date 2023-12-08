@@ -15,8 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         //start the database - creates empty tables
-        DatabaseController DBController;
-        DBController = new DatabaseController(MainActivity.this);
+        DatabaseController DBController = new DatabaseController(MainActivity.this);
         DBController.getWritableDatabase();
 
         Button settingsButton = findViewById(R.id.settingsButton);
@@ -44,12 +43,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(LanguageChosen);
 
         } else if (chosenView == R.id.openFrench) {
-            LanguageChosen.putExtra("LanguageKey", "French"); //relay the chosen language to the category menu
+            LanguageChosen.putExtra("LanguageChosen", "French"); //relay the chosen language to the category menu
             startActivity(LanguageChosen);
 
         } else if (chosenView == R.id.openSpanish) {
-
-            LanguageChosen.putExtra("LanguageKey", "Spanish");
+            LanguageChosen.putExtra("LanguageChosen", "Spanish");
             startActivity(LanguageChosen);
 
         } else if (chosenView == R.id.openLanguage3) {
