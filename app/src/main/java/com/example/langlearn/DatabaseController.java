@@ -11,7 +11,6 @@ import android.util.Log;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -100,15 +99,9 @@ public class DatabaseController extends SQLiteOpenHelper {
         ArrayList<String> engWords = new ArrayList<>();
         ArrayList<String> langWords = new ArrayList<>();
 
-        //Cursor getterCursor = db.query(ChosenLanguage, new String[]{"LangWord", "EnglishWord"},
-        //        ("Class= " + "'"+ChosenCategory+"'"),
-        //        null, null, null, null, null);
-
-
-        //Query below proves query is not the problem, selecting all directly still returns nothing
-        Cursor getterCursor = db.rawQuery("SELECT * FROM French", null);
-        Log.println(Log.VERBOSE, "Cursor Count", String.valueOf(getterCursor.getCount()));
-        //even this query returns a cursor with 0 values
+        Cursor getterCursor = db.query(ChosenLanguage, new String[]{"LangWord", "EnglishWord"},
+                ("Class= " + "'"+ChosenCategory+"'"),
+                null, null, null, null, null);
 
         //If the cursor is pointing to the first entry, begin iterating over selected values
         if (getterCursor.getCount() == 0 || !getterCursor.moveToFirst()) {
