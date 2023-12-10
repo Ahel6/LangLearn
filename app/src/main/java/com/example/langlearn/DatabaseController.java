@@ -57,7 +57,7 @@ public class DatabaseController extends SQLiteOpenHelper {
 
         //read and insert from CSV
         //https://stackoverflow.com/questions/16672074/import-csv-file-to-sqlite-in-android
-        String[] Languages = new String[]{"FrenchWords", "SpanishWords"};
+        String[] Languages = new String[]{"French", "Spanish"};
 
         //create new ISR based on language files (specified above)
         for (String item : Languages) {
