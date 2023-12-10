@@ -50,22 +50,24 @@ public class DatabaseController extends SQLiteOpenHelper {
                 + ColumnClass + " TEXT)";
 
         //create Tables
-        db.execSQL("CREATE TABLE " + "FrenchWords" + query);
-        db.execSQL("CREATE TABLE " + "SpanishWords" + query);
+        db.execSQL("CREATE TABLE " + "French" + query);
+        db.execSQL("CREATE TABLE " + "Spanish" + query);
 
-        /** https://stackoverflow.com/questions/16672074/import-csv-file-to-sqlite-in-android **/
+
 
         //read and insert from CSV
+        //https://stackoverflow.com/questions/16672074/import-csv-file-to-sqlite-in-android
         String[] Languages = new String[]{"FrenchWords", "SpanishWords"};
+        //create new ISR based on language files (specified above)
         for (String item : Languages) {
             InputStreamReader ISR;
-            try {
+            try { //open csv
                 ISR = new InputStreamReader(context.getAssets().open(item + ".csv"));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             BufferedReader buffer = new BufferedReader(ISR);
-            String line = "";
+            String line;
             db.beginTransaction();
             try {
                 while ((line = buffer.readLine()) != null) {
@@ -95,19 +97,29 @@ public class DatabaseController extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<String> engWords = new ArrayList<>();
         ArrayList<String> langWords = new ArrayList<>();
-        Cursor getQuery = db.rawQuery("SELECT " + ColumnEnglishWord + ColumnLangWord + "FROM" + Language
-                + "WHERE Class = " + Category, null);
-        if (getQuery.moveToFirst()) {
-            do {
-                engWords.add(getQuery.getString(0));
-                langWords.add(getQuery.getString(1));
-            } while (getQuery.moveToNext());
+
+        Cursor getterCursor = db.query(Language, new String[]{"LangWord", "EnglishWord"},
+                ("Class=?" + "'"+Category+"'"),
+                null, null, null, null, null);
+
+        Log.println(Log.VERBOSE, "Cursor Count", String.valueOf(getterCursor.getCount()));
+
+        if (getterCursor.getCount() == 0 || !getterCursor.moveToFirst()) {
+            while (getterCursor.moveToNext()) {
+                String word = getterCursor.getString(0);
+                engWords.add(word);
+                word = getterCursor.getString(1);
+                langWords.add(word);
+            }
+            }else{
+            Log.println(Log.VERBOSE, "Marker", "Fail at cursor moveTo");
         }
-        getQuery.close();
-        db.close();
+        getterCursor.close();
         ArrayList<ArrayList> data = new ArrayList<>();
         data.add(engWords);
         data.add(langWords);
+        Log.println(Log.VERBOSE, "Marker", String.valueOf(engWords));
+
         return data;
 
     }

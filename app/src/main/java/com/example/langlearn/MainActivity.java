@@ -1,6 +1,7 @@
 package com.example.langlearn;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -55,13 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             int dur = Toast.LENGTH_LONG;
             Toast toast = Toast.makeText(this, txt, dur);
             toast.show();
-            /**
-             * Placeholder if third language is added
-            LanguageChosen = new Intent(MainActivity.this, categorySelectMenu.class);
-            LanguageKeyNo = "Placeholder";
-            LanguageChosen.putExtra("LanguageKey", LanguageKeyNo);
-            startActivity(LanguageChosen);
-             **/
 
         }
     }
