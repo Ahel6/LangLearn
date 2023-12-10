@@ -58,6 +58,7 @@ public class DatabaseController extends SQLiteOpenHelper {
         //read and insert from CSV
         //https://stackoverflow.com/questions/16672074/import-csv-file-to-sqlite-in-android
         String[] Languages = new String[]{"FrenchWords", "SpanishWords"};
+
         //create new ISR based on language files (specified above)
         for (String item : Languages) {
             InputStreamReader ISR;
@@ -93,31 +94,37 @@ public class DatabaseController extends SQLiteOpenHelper {
     }
 
     //returns a nested arrayList containing the english and foreign words based on parameters passed to it
-    public ArrayList<ArrayList> getTranslations(String Language, String Category) {
+    public ArrayList<ArrayList> getTranslations(String ChosenLanguage, String ChosenCategory) {
+
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<String> engWords = new ArrayList<>();
         ArrayList<String> langWords = new ArrayList<>();
 
-        Cursor getterCursor = db.query(Language, new String[]{"LangWord", "EnglishWord"},
-                ("Class=?" + "'"+Category+"'"),
-                null, null, null, null, null);
+        //Cursor getterCursor = db.query(ChosenLanguage, new String[]{"LangWord", "EnglishWord"},
+        //        ("Class= " + "'"+ChosenCategory+"'"),
+        //        null, null, null, null, null);
 
+
+        //Query below proves query is not the problem, selecting all directly still returns nothing
+        Cursor getterCursor = db.rawQuery("SELECT * FROM French", null);
         Log.println(Log.VERBOSE, "Cursor Count", String.valueOf(getterCursor.getCount()));
+        //even this query returns a cursor with 0 values
 
+        //If the cursor is pointing to the first entry, begin iterating over selected values
         if (getterCursor.getCount() == 0 || !getterCursor.moveToFirst()) {
             while (getterCursor.moveToNext()) {
                 String word = getterCursor.getString(0);
-                engWords.add(word);
-                word = getterCursor.getString(1);
                 langWords.add(word);
+                word = getterCursor.getString(1);
+                engWords.add(word);
             }
-            }else{
-            Log.println(Log.VERBOSE, "Marker", "Fail at cursor moveTo");
+
+
         }
-        getterCursor.close();
         ArrayList<ArrayList> data = new ArrayList<>();
         data.add(engWords);
         data.add(langWords);
+        getterCursor.close();
         Log.println(Log.VERBOSE, "Marker", String.valueOf(engWords));
 
         return data;

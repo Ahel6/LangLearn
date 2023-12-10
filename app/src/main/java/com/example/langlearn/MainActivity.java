@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //start the database - creates empty tables
         DatabaseController DBController = new DatabaseController(MainActivity.this);
-        DBController.getWritableDatabase();
+        //DBController.getWritableDatabase();
 
         Button settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(this);

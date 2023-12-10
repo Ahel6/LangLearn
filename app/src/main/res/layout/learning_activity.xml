@@ -124,12 +124,12 @@
         app:layout_constraintGuide_begin="20dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/foreignWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="68dp"
-        android:text="TextView"
+        android:text="ForeignWord"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/button6"
         app:layout_constraintEnd_toEndOf="parent"
