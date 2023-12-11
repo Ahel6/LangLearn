@@ -54,7 +54,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/LearnButton1"
         android:layout_width="180dp"
         android:layout_height="75dp"
         android:layout_marginStart="32dp"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/LearnButton2"
         android:layout_width="180dp"
         android:layout_height="75dp"
         android:layout_marginStart="225dp"
@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/LearnButton4"
         android:layout_width="180dp"
         android:layout_height="75dp"
         android:layout_marginStart="225dp"
@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/LearnButton3"
         android:layout_width="180dp"
         android:layout_height="75dp"
         android:layout_marginStart="32dp"
@@ -131,7 +131,7 @@
         android:layout_marginBottom="68dp"
         android:text="ForeignWord"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
+        app:layout_constraintBottom_toTopOf="@+id/LearnButton1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />

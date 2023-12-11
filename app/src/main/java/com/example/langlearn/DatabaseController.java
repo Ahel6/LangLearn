@@ -20,18 +20,11 @@ import java.util.ArrayList;
  */
 
 public class DatabaseController extends SQLiteOpenHelper {
-
     //database details
     private static final String DBName = "Languages";
     private static final int DBVersion = 1;
+    private final Context context;
 
-    //table details
-    private final String ID = "ID"; //
-    private final String ColumnLangWord = "LangWord"; //column name
-    private final String ColumnEnglishWord = "EnglishWord"; //column name
-    private final String ColumnClass = "Class"; //
-
-    private Context context;
 
     //Controller constructor
     public DatabaseController(Context context) {
@@ -41,6 +34,11 @@ public class DatabaseController extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        final String ID = "ID"; //
+        final String ColumnLangWord = "LangWord"; //column name
+        final String ColumnEnglishWord = "EnglishWord"; //column name
+        final String ColumnClass = "Class"; //
+
         //create tables
         String query = " ("
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -51,7 +49,6 @@ public class DatabaseController extends SQLiteOpenHelper {
         //create Tables
         db.execSQL("CREATE TABLE " + "French" + query);
         db.execSQL("CREATE TABLE " + "Spanish" + query);
-
 
 
         //read and insert from CSV
@@ -80,49 +77,62 @@ public class DatabaseController extends SQLiteOpenHelper {
                     Values.put(ColumnEnglishWord, columns[1].trim());
                     Values.put(ColumnClass, columns[2].trim());
                     db.insert(item, null, Values);
-                    Log.println(Log.VERBOSE, "Marker", "Entry inserted");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
             db.setTransactionSuccessful();
             db.endTransaction();
-            Log.println(Log.VERBOSE, "Marker", "Data Insertion Complete");
-
         }
     }
 
-    //returns a nested arrayList containing the english and foreign words based on parameters passed to it
-    public ArrayList<ArrayList> getTranslations(String ChosenLanguage, String ChosenCategory) {
+    /**
+     * Return the list of english words from the chosen category
+     *
+     * @param ChosenLanguage - language selected in main activity
+     * @param ChosenCategory - language selected in categorySelectMenu activity
+     * @return
+     */
+    public ArrayList<String> getEnglish(String ChosenLanguage, String ChosenCategory) {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        ArrayList<String> engWords = new ArrayList<>();
-        ArrayList<String> langWords = new ArrayList<>();
+        ArrayList<String> engWordsArr = new ArrayList<>();
 
-        Cursor getterCursor = db.query(ChosenLanguage, new String[]{"LangWord", "EnglishWord"},
-                ("Class= " + "'"+ChosenCategory+"'"),
+        Cursor getterCursor = db.query(ChosenLanguage, new String[]{"EnglishWord"},
+                ("Class= " + "'" + ChosenCategory + "'"),
                 null, null, null, null, null);
 
-        //If the cursor is pointing to the first entry, begin iterating over selected values
+        //Check if cursor not empty
         if (getterCursor.getCount() == 0 || !getterCursor.moveToFirst()) {
-            while (getterCursor.moveToNext()) {
-                String word = getterCursor.getString(0);
-                langWords.add(word);
-                word = getterCursor.getString(1);
-                engWords.add(word);
-            }
-
-
+            do {
+                engWordsArr.add(getterCursor.getString(0));
+            } while (getterCursor.moveToNext());
         }
-        ArrayList<ArrayList> data = new ArrayList<>();
-        data.add(engWords);
-        data.add(langWords);
         getterCursor.close();
-        Log.println(Log.VERBOSE, "Marker", String.valueOf(engWords));
-
-        return data;
-
+        Log.println(Log.INFO, "Database Controller", "Eng words arr = " + engWordsArr);
+        return engWordsArr;
     }
+
+    public ArrayList<String> getForeign(String ChosenLanguage, String ChosenCategory) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<String> langWordsArr = new ArrayList<>();
+
+        Cursor getterCursor = db.query(ChosenLanguage, new String[]{"LangWord"},
+                ("Class= " + "'" + ChosenCategory + "'"),
+                null, null, null, null, null);
+
+        //Check if cursor not empty
+        if (getterCursor.getCount() == 0 || !getterCursor.moveToFirst()) {
+            do {
+                langWordsArr.add(getterCursor.getString(0));
+            } while (getterCursor.moveToNext());
+        }
+        getterCursor.close();
+        Log.println(Log.INFO, "Database Controller", "Lang words arr = " + langWordsArr);
+        return langWordsArr;
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

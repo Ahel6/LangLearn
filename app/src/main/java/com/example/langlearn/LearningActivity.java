@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
-
+import java.util.Random;
 public class LearningActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +22,23 @@ public class LearningActivity extends MainActivity {
 
         DatabaseController DBController = new DatabaseController(LearningActivity.this);
         DBController.getReadableDatabase();
-        ArrayList<ArrayList> wordsArray = new ArrayList<>();
-        wordsArray.add(DBController.getTranslations(SelectedLanguage, SelectedCategory));
-        Log.println(Log.VERBOSE, "Marker", String.valueOf(wordsArray));
+
+        ArrayList<String> langWordsArr;
+        langWordsArr = (DBController.getForeign(SelectedLanguage,SelectedCategory));
+
+        ArrayList<String> engWordsArr;
+        engWordsArr = (DBController.getEnglish(SelectedLanguage,SelectedCategory));
+
+        Log.println(Log.INFO, "Learning Activity", "Two arrays (hopefully): \n" + langWordsArr + "\n" + engWordsArr); //print the chosen index
+
+        //First creation, set random words on buttons
+        Random RandInt = new Random();
+        int index = RandInt.nextInt(langWordsArr.size());
+        Log.println(Log.INFO, "Marker", "Chosen index " + index); //print the chosen index
+
+        //get a random word from the first (foreign words) array
+        String chosen = String.valueOf(langWordsArr.get(index));
+        Log.println(Log.INFO, "Marker", "Chosen word " + chosen);
 
     }
 
