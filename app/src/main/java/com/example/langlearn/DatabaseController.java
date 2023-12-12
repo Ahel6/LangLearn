@@ -103,7 +103,7 @@ public class DatabaseController extends SQLiteOpenHelper {
                 null, null, null, null, null);
 
         //Check if cursor not empty
-        if (getterCursor.getCount() == 0 || !getterCursor.moveToFirst()) {
+        if (getterCursor.moveToFirst()) {
             do {
                 engWordsArr.add(getterCursor.getString(0));
             } while (getterCursor.moveToNext());
@@ -123,7 +123,7 @@ public class DatabaseController extends SQLiteOpenHelper {
                 null, null, null, null, null);
 
         //Check if cursor not empty
-        if (getterCursor.getCount() == 0 || !getterCursor.moveToFirst()) {
+        if (getterCursor.moveToFirst()) {
             do {
                 langWordsArr.add(getterCursor.getString(0));
             } while (getterCursor.moveToNext());

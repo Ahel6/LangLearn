@@ -23,11 +23,8 @@ public class LearningActivity extends MainActivity {
         DatabaseController DBController = new DatabaseController(LearningActivity.this);
         DBController.getReadableDatabase();
 
-        ArrayList<String> langWordsArr;
-        langWordsArr = (DBController.getForeign(SelectedLanguage,SelectedCategory));
-
-        ArrayList<String> engWordsArr;
-        engWordsArr = (DBController.getEnglish(SelectedLanguage,SelectedCategory));
+        ArrayList<String> langWordsArr = (DBController.getForeign(SelectedLanguage,SelectedCategory));
+        ArrayList<String> engWordsArr = (DBController.getEnglish(SelectedLanguage,SelectedCategory));
 
         Log.println(Log.INFO, "Learning Activity", "Two arrays (hopefully): \n" + langWordsArr + "\n" + engWordsArr); //print the chosen index
 
