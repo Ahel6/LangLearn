@@ -29,6 +29,8 @@ public class LearningActivity extends MainActivity {
 
         this.setArrays(SelectedLanguage, SelectedCategory);
 
+        newQuestion();
+
     }
 
     public void setArrays (String SelectedLanguage, String SelectedCategory){
