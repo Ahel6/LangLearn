@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Random;
 public class LearningActivity extends MainActivity {
     public int correctButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,19 +61,19 @@ public class LearningActivity extends MainActivity {
         switch(RandInt.nextInt(4)){//select random button for correct translation
             case 0:
                 button1.setText(String.valueOf(engWordsArr.get(index)));
-                correctButton = 0;
+                correctButton = R.id.LearnButton1;
                 break;
             case 1:
                 button2.setText(String.valueOf(engWordsArr.get(index)));
-                correctButton = 1;
+                correctButton = R.id.LearnButton2;
                 break;
             case 2:
                 button3.setText(String.valueOf(engWordsArr.get(index)));
-                correctButton = 2;
+                correctButton = R.id.LearnButton3;
                 break;
             case 3:
                 button4.setText(String.valueOf(engWordsArr.get(index)));
-                correctButton = 3;
+                correctButton = R.id.LearnButton4;
                 break;
         }
 
@@ -88,14 +87,18 @@ public class LearningActivity extends MainActivity {
         Button button3 = findViewById(R.id.LearnButton3);
         Button button4 = findViewById(R.id.LearnButton4);
 
-        if (view.getId() == R.id.LearnButton1 && correctButton == 0){
+        if (R.id.LearnButton1 == correctButton){
             button1.setBackgroundColor(Color.GREEN);
-        }else if (view.getId() == R.id.LearnButton2 && correctButton == 1){
+
+        }else if (R.id.LearnButton2 == correctButton){
             button2.setBackgroundColor(Color.GREEN);
-        }else if (view.getId() == R.id.LearnButton3 && correctButton == 2){
+
+        }else if (R.id.LearnButton3 == correctButton){
             button3.setBackgroundColor(Color.GREEN);
-        }else if (view.getId() == R.id.LearnButton4 && correctButton == 3){
+
+        }else if (R.id.LearnButton4 == correctButton){
             button4.setBackgroundColor(Color.GREEN);
+
         }else{
             button1.setBackgroundColor(Color.RED);
             button2.setBackgroundColor(Color.RED);
