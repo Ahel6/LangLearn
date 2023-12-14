@@ -81,30 +81,12 @@ public class LearningActivity extends MainActivity {
 
     }
 
-    public void onClick(View view) { //HORRIBLY inefficient, should probably find a better way of doing this
-        Button button1 = findViewById(R.id.LearnButton1);
-        Button button2 = findViewById(R.id.LearnButton2);
-        Button button3 = findViewById(R.id.LearnButton3);
-        Button button4 = findViewById(R.id.LearnButton4);
-
-        if (R.id.LearnButton1 == correctButton){
-            button1.setBackgroundColor(Color.GREEN);
-
-        }else if (R.id.LearnButton2 == correctButton){
-            button2.setBackgroundColor(Color.GREEN);
-
-        }else if (R.id.LearnButton3 == correctButton){
-            button3.setBackgroundColor(Color.GREEN);
-
-        }else if (R.id.LearnButton4 == correctButton){
-            button4.setBackgroundColor(Color.GREEN);
+    public void onClick(View view) {
+        if (view.getId() == correctButton){
+            view.setBackgroundColor(Color.GREEN);
 
         }else{
-            button1.setBackgroundColor(Color.RED);
-            button2.setBackgroundColor(Color.RED);
-            button3.setBackgroundColor(Color.RED);
-            button4.setBackgroundColor(Color.RED);
-
+            view.setBackgroundColor(Color.RED);
         }
 
     }
