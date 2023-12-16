@@ -35,7 +35,6 @@ public class LearningActivity extends MainActivity {
         assert Extras != null;
         this.SelectedLanguage = Extras.getString("LanguageChosen");
         this.SelectedCategory = Extras.getString("SelectedCategory");
-
         setArrays(SelectedLanguage, SelectedCategory);
         setButtons();
         newQuestion();
