@@ -10,4 +10,6 @@
     <string name="Start_FoodDrink">Start Learning food and drink</string>
     <string name="Start_Help">Start Learning Help</string>
     <string name="Placeholder">Unavailable at this time</string>
+    <string name="_0">0</string>
+    <string name="score">Score:</string>
 </resources>

@@ -54,12 +54,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/LearnButton1"
+        android:id="@+id/LearnButton0"
         android:layout_width="180dp"
         android:layout_height="75dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="225dp"
         android:layout_marginEnd="225dp"
+        android:layout_marginBottom="288dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/backToMainButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <Button
+        android:id="@+id/LearnButton1"
+        android:layout_width="180dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="225dp"
+        android:layout_marginTop="225dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="288dp"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/backToMainButton"
@@ -71,23 +85,9 @@
         android:id="@+id/LearnButton2"
         android:layout_width="180dp"
         android:layout_height="75dp"
-        android:layout_marginStart="225dp"
-        android:layout_marginTop="225dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="288dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/backToMainButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
-
-    <Button
-        android:id="@+id/LearnButton4"
-        android:layout_width="180dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="225dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="288dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="225dp"
         android:layout_marginBottom="174dp"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/backToMainButton"
@@ -99,9 +99,9 @@
         android:id="@+id/LearnButton3"
         android:layout_width="180dp"
         android:layout_height="75dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="225dp"
         android:layout_marginTop="288dp"
-        android:layout_marginEnd="225dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="174dp"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/backToMainButton"
@@ -129,11 +129,42 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="68dp"
-        android:text="ForeignWord"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/LearnButton1"
+        app:layout_constraintBottom_toTopOf="@+id/LearnButton0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <TextView
+        android:id="@+id/ScoreNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginBottom="70dp"
+        android:text="@string/_0"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@id/backToMainButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2"
+        app:layout_constraintVertical_bias="0.703" />
+
+    <TextView
+        android:id="@+id/Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="70dp"
+        android:text="@string/score"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@id/backToMainButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2"
+        app:layout_constraintVertical_bias="0.703" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
