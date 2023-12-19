@@ -91,7 +91,7 @@ public class DatabaseController extends SQLiteOpenHelper {
      *
      * @param ChosenLanguage - language selected in main activity
      * @param ChosenCategory - language selected in categorySelectMenu activity
-     * @return
+     * @return returns the populated arraylist
      */
     public ArrayList<String> getEnglish(String ChosenLanguage, String ChosenCategory) {
 
