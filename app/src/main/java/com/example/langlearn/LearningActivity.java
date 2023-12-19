@@ -114,7 +114,7 @@ public class LearningActivity extends MainActivity {
         engWordsArr.remove(index); //word is removed so it doesn't get used to fill other buttons
         langWordsArr.remove(index);
 
-        //iterate the 4 buttons, adding random words to all of them
+        //iterate the 4 buttons based on the ID of the buttons, adding random words to all of them
         for (int I = 0; I < 4; I++) {
             if (I != dontUse) {
                 index = RandInt.nextInt(engWordsArr.size());
