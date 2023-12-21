@@ -12,6 +12,7 @@ public class Settings extends MainActivity {
         setContentView(R.layout.activity_settings);
     }
 
+
     public void openMain(View v){
         Intent showMain = new Intent(this, MainActivity.class);
         startActivity(showMain);

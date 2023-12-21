@@ -12,4 +12,5 @@
     <string name="Placeholder">Unavailable at this time</string>
     <string name="_0">0</string>
     <string name="score">Score:</string>
+    <string name="ChangeAppTheme">Change the apps theme\n</string>
 </resources>
