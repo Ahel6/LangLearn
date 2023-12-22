@@ -13,7 +13,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /**
+        if (()) {
+            setTheme(R.style.Dark_Theme_LangLearn);
+        } else {
+            setTheme(R.style.Base_Theme_LangLearn);
+        }
+         **/
         setContentView(R.layout.activity_main);
+
 
         //start the database - creates empty tables
         DatabaseController DBController = new DatabaseController(MainActivity.this);
