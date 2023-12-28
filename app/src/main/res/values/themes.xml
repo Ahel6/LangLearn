@@ -3,6 +3,7 @@
     <style name="Base.Theme.LangLearn" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:textColor">@color/Black</item>
         <item name="colorPrimary">@color/Blue</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="Theme.LangLearn" parent="Base.Theme.LangLearn" />
@@ -12,5 +13,7 @@
         <item name="android:background">@color/DarkGray</item>
         <item name="android:textColor">@color/LightGray</item>
         <item name="colorPrimary">@color/Slate</item>
+        <item name="colorAccent">@color/White</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
     </style>
 </resources>

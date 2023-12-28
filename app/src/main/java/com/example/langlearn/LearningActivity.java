@@ -3,6 +3,7 @@ package com.example.langlearn;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -65,19 +66,19 @@ public class LearningActivity extends MainActivity {
     public void setButtons() { //set the listeners and colours of buttons, called when a new question is generated
 
         this.button1 = findViewById(R.id.LearnButton0);
-        button1.setBackgroundColor(Color.parseColor("#6363E1"));
+        button1.getBackground().clearColorFilter();
         button1.setOnClickListener(this);
 
         this.button2 = findViewById(R.id.LearnButton1);
-        button2.setBackgroundColor(Color.parseColor("#6363E1"));
+        button2.getBackground().clearColorFilter();
         button2.setOnClickListener(this);
 
         this.button3 = findViewById(R.id.LearnButton2);
-        button3.setBackgroundColor(Color.parseColor("#6363E1"));
+        button3.getBackground().clearColorFilter();
         button3.setOnClickListener(this);
 
         this.button4 = findViewById(R.id.LearnButton3);
-        button4.setBackgroundColor(Color.parseColor("#6363E1"));
+        button4.getBackground().clearColorFilter();
         button4.setOnClickListener(this);
 
         this.ScoreView = findViewById(R.id.ScoreNum);
@@ -132,7 +133,7 @@ public class LearningActivity extends MainActivity {
             if (I != dontUse) {
                 index = RandInt.nextInt(engWordsArr.size());
 
-                Button temp = (Button) findViewById(getResources().getIdentifier("LearnButton" + I, "id", this.getPackageName()));
+                Button temp = findViewById(getResources().getIdentifier("LearnButton" + I, "id", this.getPackageName()));
                 temp.setText(String.valueOf(engWordsArr.get(index)));
                 engWordsArr.remove(index);
                 langWordsArr.remove(index);
@@ -145,13 +146,13 @@ public class LearningActivity extends MainActivity {
     public void onClick(View view) {
         if (!quesAnswered) { //if question hasn't been answered
             if (view.getId() == correctButton) {
-                view.setBackgroundColor(Color.rgb(49, 173, 65));
+                view.getBackground().setColorFilter(Color.rgb(49, 173, 65), PorterDuff.Mode.MULTIPLY);
                 quesAnswered = true;
                 int Score = Integer.parseInt((String) ScoreView.getText());
                 Score++;
                 ScoreView.setText(String.valueOf(Score));
             } else {
-                view.setBackgroundColor(Color.RED);
+                view.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
             }
         } else { //if answered, generate a new question
             newQuestion();
