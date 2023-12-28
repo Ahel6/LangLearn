@@ -1,5 +1,6 @@
 package com.example.langlearn;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -29,6 +30,18 @@ public class LearningActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //set theme
+        themePref = getSharedPreferences("themePicked", Context.MODE_PRIVATE);
+        boolean isDark = themePref.getBoolean("isDark", false);
+        Log.println(Log.VERBOSE, "isDark value", String.valueOf(isDark));
+
+        if (isDark){
+            setTheme(R.style.Dark_Theme_LangLearn);
+        }else{
+            setTheme(R.style.Base_Theme_LangLearn);
+        }
+
         setContentView(R.layout.learning_activity);
         //get selected language and category
         Bundle Extras = getIntent().getExtras();

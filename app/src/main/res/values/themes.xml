@@ -7,6 +7,7 @@
 
     <style name="Theme.LangLearn" parent="Base.Theme.LangLearn" />
 
+    <!-- Dark Theme  -->
     <style name="Dark.Theme.LangLearn" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:background">@color/DarkGray</item>
         <item name="android:textColor">@color/LightGray</item>

@@ -71,15 +71,16 @@
 
         <RadioButton
             android:id="@+id/defaultRadio"
+            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Default" />
+            android:text="@string/defaultTheme" />
 
         <RadioButton
             android:id="@+id/darkRadio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dark" />
+            android:text="@string/dark" />
 
     </RadioGroup>
 
@@ -92,7 +93,7 @@
         android:layout_marginEnd="150dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Pick Theme"
+        android:text="@string/pick_theme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />

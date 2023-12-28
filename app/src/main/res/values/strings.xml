@@ -13,4 +13,7 @@
     <string name="_0">0</string>
     <string name="score">Score:</string>
     <string name="ChangeAppTheme">Change the apps theme\n</string>
+    <string name="dark">Dark Theme</string>
+    <string name="pick_theme">Pick which theme to use</string>
+    <string name="defaultTheme">Default theme</string>
 </resources>

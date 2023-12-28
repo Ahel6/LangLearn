@@ -1,8 +1,10 @@
 package com.example.langlearn;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -10,6 +12,17 @@ public class categorySelectMenu extends MainActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //set theme
+        themePref = getSharedPreferences("themePicked", Context.MODE_PRIVATE);
+        boolean isDark = themePref.getBoolean("isDark", false);
+        Log.println(Log.VERBOSE, "isDark value", String.valueOf(isDark));
+
+        if (isDark){
+            setTheme(R.style.Dark_Theme_LangLearn);
+        }else{
+            setTheme(R.style.Base_Theme_LangLearn);
+        }
 
         setContentView(R.layout.activity_category_select_menu);
 
