@@ -17,7 +17,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="100dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Settings"
+        android:text="@string/settings"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,25 +67,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText">
+        app:layout_constraintTop_toBottomOf="@+id/pickThemeMaker">
 
         <RadioButton
             android:id="@+id/defaultRadio"
             style="@style/Widget.AppCompat.CompoundButton.RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/defaultTheme" />
+            android:text="@string/defaultTheme"
+            android:textColor="@color/design_default_color_on_secondary"/>
 
         <RadioButton
             android:id="@+id/darkRadio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dark" />
+            android:text="@string/dark"
+            android:textColor="@color/design_default_color_on_secondary"/>
 
     </RadioGroup>
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/pickThemeMaker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -93,9 +95,12 @@
         android:layout_marginEnd="150dp"
         android:ems="10"
         android:inputType="text"
+        android:minHeight="48dp"
         android:text="@string/pick_theme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        android:autofillHints="Select which theme to use"
+        android:labelFor="@id/themeRadioGroup"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

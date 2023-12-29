@@ -3,7 +3,6 @@ package com.example.langlearn;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,13 +14,16 @@ import java.util.Random;
 
 public class LearningActivity extends MainActivity {
     public int correctButton;
+    int index;
+    int defaultColour;
+    Random RandInt = new Random();
     boolean quesAnswered = false;
     private ArrayList langWordsArr;
     private ArrayList engWordsArr;
+    private Button button0;
     private Button button1;
     private Button button2;
     private Button button3;
-    private Button button4;
     private String SelectedLanguage;
     private String SelectedCategory;
 
@@ -39,16 +41,19 @@ public class LearningActivity extends MainActivity {
 
         if (isDark){
             setTheme(R.style.Dark_Theme_LangLearn);
+            defaultColour = getColor(R.color.Slate);
         }else{
             setTheme(R.style.Base_Theme_LangLearn);
+            defaultColour = getColor(R.color.Blue);
         }
-
         setContentView(R.layout.learning_activity);
+
         //get selected language and category
         Bundle Extras = getIntent().getExtras();
         assert Extras != null;
-        this.SelectedLanguage = Extras.getString("LanguageChosen");
-        this.SelectedCategory = Extras.getString("SelectedCategory");
+        SelectedLanguage = Extras.getString("LanguageChosen");
+        SelectedCategory = Extras.getString("SelectedCategory");
+
         setArrays(SelectedLanguage, SelectedCategory);
         setButtons();
         newQuestion();
@@ -56,32 +61,27 @@ public class LearningActivity extends MainActivity {
     }
 
     public void setArrays(String SelectedLanguage, String SelectedCategory) {
-        DatabaseController DBController = new DatabaseController(LearningActivity.this);
-        DBController.getReadableDatabase();
-
-        this.langWordsArr = (DBController.getForeign(SelectedLanguage, SelectedCategory));
-        this.engWordsArr = (DBController.getEnglish(SelectedLanguage, SelectedCategory));
+        try (DatabaseController DBController = new DatabaseController(LearningActivity.this)) {
+            DBController.getReadableDatabase();
+            this.langWordsArr = (DBController.getForeign(SelectedLanguage, SelectedCategory));
+            this.engWordsArr = (DBController.getEnglish(SelectedLanguage, SelectedCategory));
+        }
     }
 
     public void setButtons() { //set the listeners and colours of buttons, called when a new question is generated
+        index = RandInt.nextInt(engWordsArr.size());
 
-        this.button1 = findViewById(R.id.LearnButton0);
-        button1.getBackground().clearColorFilter();
-        button1.setOnClickListener(this);
+        button0 = findViewById(R.id.LearnButton0);
+        button1 = findViewById(R.id.LearnButton1);
+        button2 = findViewById(R.id.LearnButton2);
+        button3 = findViewById(R.id.LearnButton3);
 
-        this.button2 = findViewById(R.id.LearnButton1);
-        button2.getBackground().clearColorFilter();
-        button2.setOnClickListener(this);
-
-        this.button3 = findViewById(R.id.LearnButton2);
-        button3.getBackground().clearColorFilter();
-        button3.setOnClickListener(this);
-
-        this.button4 = findViewById(R.id.LearnButton3);
-        button4.getBackground().clearColorFilter();
-        button4.setOnClickListener(this);
-
-        this.ScoreView = findViewById(R.id.ScoreNum);
+        for (int I = 0; I < 4; I++) {
+            Button temp = findViewById(getResources().getIdentifier("LearnButton" + I, "id", this.getPackageName()));
+            temp.setOnClickListener(this);
+            temp.setBackgroundColor(defaultColour);
+        }
+        ScoreView = findViewById(R.id.ScoreNum);
     }
 
 
@@ -93,11 +93,8 @@ public class LearningActivity extends MainActivity {
         //element assignment, buttons and text
         TextView foreignWord = findViewById(R.id.foreignWord);
         //get a random word from the foreign words array
-        Random RandInt = new Random();
-        int index = RandInt.nextInt(langWordsArr.size());
-        Log.println(Log.INFO, "Marker", "Chosen index " + index); //print the chosen index
+        RandInt.nextInt(langWordsArr.size());
         String chosen = String.valueOf(langWordsArr.get(index));
-        Log.println(Log.INFO, "Marker", "Chosen word " + chosen);
 
         //set the text based on selected element
         foreignWord.setText(chosen);
@@ -106,21 +103,21 @@ public class LearningActivity extends MainActivity {
         int dontUse = 0;
         switch (RandInt.nextInt(4)) {
             case 0:
-                button1.setText(String.valueOf(engWordsArr.get(index)));
+                button0.setText(String.valueOf(engWordsArr.get(index)));
                 correctButton = R.id.LearnButton0;
                 break;
             case 1:
-                button2.setText(String.valueOf(engWordsArr.get(index)));
+                button1.setText(String.valueOf(engWordsArr.get(index)));
                 correctButton = R.id.LearnButton1;
                 dontUse = 1;
                 break;
             case 2:
-                button3.setText(String.valueOf(engWordsArr.get(index)));
+                button2.setText(String.valueOf(engWordsArr.get(index)));
                 correctButton = R.id.LearnButton2;
                 dontUse = 2;
                 break;
             case 3:
-                button4.setText(String.valueOf(engWordsArr.get(index)));
+                button3.setText(String.valueOf(engWordsArr.get(index)));
                 correctButton = R.id.LearnButton3;
                 dontUse = 3;
                 break;
@@ -132,7 +129,6 @@ public class LearningActivity extends MainActivity {
         for (int I = 0; I < 4; I++) {
             if (I != dontUse) {
                 index = RandInt.nextInt(engWordsArr.size());
-
                 Button temp = findViewById(getResources().getIdentifier("LearnButton" + I, "id", this.getPackageName()));
                 temp.setText(String.valueOf(engWordsArr.get(index)));
                 engWordsArr.remove(index);
@@ -146,13 +142,13 @@ public class LearningActivity extends MainActivity {
     public void onClick(View view) {
         if (!quesAnswered) { //if question hasn't been answered
             if (view.getId() == correctButton) {
-                view.getBackground().setColorFilter(Color.rgb(49, 173, 65), PorterDuff.Mode.MULTIPLY);
+                view.setBackgroundColor(Color.rgb(49, 173, 65));
                 quesAnswered = true;
                 int Score = Integer.parseInt((String) ScoreView.getText());
                 Score++;
                 ScoreView.setText(String.valueOf(Score));
             } else {
-                view.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                view.setBackgroundColor(Color.RED);
             }
         } else { //if answered, generate a new question
             newQuestion();
