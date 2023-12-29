@@ -16,4 +16,5 @@
     <string name="dark">Dark Theme</string>
     <string name="pick_theme">Pick which theme to use</string>
     <string name="defaultTheme">Default theme</string>
+    <string name="settings">Settings page title</string>
 </resources>
