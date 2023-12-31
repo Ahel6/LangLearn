@@ -88,19 +88,19 @@
 
     <EditText
         android:id="@+id/pickThemeMaker"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="150dp"
+        android:autofillHints="Select which theme to use"
         android:ems="10"
         android:inputType="text"
+        android:labelFor="@id/themeRadioGroup"
         android:minHeight="48dp"
         android:text="@string/pick_theme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        android:autofillHints="Select which theme to use"
-        android:labelFor="@id/themeRadioGroup"/>
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
