@@ -18,8 +18,8 @@ public class LearningActivity extends MainActivity {
     int defaultColour;
     Random RandInt = new Random();
     boolean quesAnswered = false;
-    private ArrayList langWordsArr;
-    private ArrayList engWordsArr;
+    private ArrayList<String> langWordsArr;
+    private ArrayList<String> engWordsArr;
     private Button button0;
     private Button button1;
     private Button button2;

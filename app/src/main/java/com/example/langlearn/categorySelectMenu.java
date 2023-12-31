@@ -44,7 +44,7 @@ public class categorySelectMenu extends MainActivity implements View.OnClickList
 
 
     @Override
-    public void onClick(View view) { //open new activity based on button clicked
+    public void onClick(View view) {
         Intent LearningActivity = new Intent(this, LearningActivity.class);
 
         //get the language chosen in main menu
@@ -60,20 +60,21 @@ public class categorySelectMenu extends MainActivity implements View.OnClickList
 
         } else if (view.getId() == R.id.GreetingsButton) {
             LearningActivity.putExtra("SelectedCategory", "Greeting");
-            startActivity(LearningActivity);
+
 
         } else if (view.getId() == R.id.NumbersButton) {
             LearningActivity.putExtra("SelectedCategory", "Number");
-            startActivity(LearningActivity);
+
 
         } else if (view.getId() == R.id.FoodDrinkButton) {
             LearningActivity.putExtra("SelectedCategory", "Food");
-            startActivity(LearningActivity);
+
 
         } else if (view.getId() == R.id.HelpButton) {
             LearningActivity.putExtra("SelectedCategory", "Help");
-            startActivity(LearningActivity);
+
         }
+        startActivity(LearningActivity);
     }
 
 }

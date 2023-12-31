@@ -1,23 +1,14 @@
 package com.example.langlearn;
 
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-
-/**
- * Template for database creation/data addition used:
- * <a href="https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/">...</a>
- */
 
 public class DatabaseController extends SQLiteOpenHelper {
     //database details
@@ -40,7 +31,7 @@ public class DatabaseController extends SQLiteOpenHelper {
         final String ColumnClass = "Class"; //
 
         //create tables
-        String query = " ("
+        final String query = " ("
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + ColumnEnglishWord + " TEXT,"
                 + ColumnLangWord + " TEXT,"
@@ -109,7 +100,6 @@ public class DatabaseController extends SQLiteOpenHelper {
             } while (getterCursor.moveToNext());
         }
         getterCursor.close();
-        Log.println(Log.INFO, "Database Controller", "Eng words arr = " + engWordsArr);
         return engWordsArr;
     }
 
@@ -129,14 +119,13 @@ public class DatabaseController extends SQLiteOpenHelper {
             } while (getterCursor.moveToNext());
         }
         getterCursor.close();
-        Log.println(Log.INFO, "Database Controller", "Lang words arr = " + langWordsArr);
         return langWordsArr;
     }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + "French"); //if the table already exists, Drop and make a new one
+        db.execSQL("DROP TABLE IF EXISTS " + "French");
         db.execSQL("DROP TABLE IF EXISTS " + "Spanish");
 
     }
